@@ -1,0 +1,33 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+            maxAge: 3600
+      routes:
+        # 【精确路由放最前面，优先匹配AI接口】
+        - id: ai-service
+          uri: lb://ai-service
+          predicates:
+            - Path=/api/ai/chat/**
+          filters:
+            - StripPrefix=0
+        # 认证服务路由
+        - id: smart-auth
+          uri: lb://smart-auth
+          predicates:
+            - Path=/user/**,/auth/**
+          filters:
+            - StripPrefix=0
+        # 通用业务路由放在最后
+        - id: smart-serve
+          uri: lb://smart-serve
+          predicates:
+            - Path=/api/**,/notice/**,/statistic/**,/inventory/**,/purchase/**,/sales/**,/farmland/**,/role/**,/menu/**,/file/**
+          filters:
+            - StripPrefix=0

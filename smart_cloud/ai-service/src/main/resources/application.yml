@@ -1,0 +1,33 @@
+server:
+  port: 8087
+
+feign:
+  circuitbreaker:
+    enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+langchain4j:
+  open-ai:
+    chat-model:
+      api-key:
+      model-name: qwen3.7-plus
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      temperature: 0.1
+      timeout: PT120S
+      max-tokens: 2048
+      log-requests: true
+      log-responses: true
+
+logging:
+  level:
+    dev.langchain4j: DEBUG
+    org.example.aiservice: DEBUG
+
+rag:
+  knowledge:
+    path: knowledge/农业知识库.txt
+  max-results: 3
