@@ -53,8 +53,6 @@
 
 ## 📁 项目结构
 
-```
-
 Smart-Farmland
 ├── eureka-server          # 注册中心服务
 ├── gateway                # API 网关服务
@@ -64,8 +62,6 @@ Smart-Farmland
 ├── smart-frontend         # Vue 前端项目
 ├── sql                    # 数据库初始化脚本
 └── README.md
-
-```
 
 ## 🚀 快速开始
 
