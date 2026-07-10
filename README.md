@@ -75,7 +75,7 @@ Smart-Farmland
 ### 后端启动步骤
 
 1. **克隆项目**
-```bash
+bash
 git clone https://github.com/nancy1031/Smart-Farmland.git
 cd Smart-Farmland
-```
+
